@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Bikram Kumar Yadav - WordPress Developer specializing in high-performance websites, WooCommerce stores, and SEO optimization.">
+  <meta name="keywords" content="WordPress Developer, WooCommerce, Elementor, Custom Themes, SEO, Web Developer">
+  <title>Bikram Kumar Yadav | WordPress Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ===== ROOT VARIABLES ===== */
+    :root {
+      --primary: #6C5CE7;
+      --secondary: #0984E3;
+      --accent: #00CEC9;
+      --dark: #1a1a2e;
+      --darker: #0f0f1a;
+      --card-bg: #1e1e35;
+      --card-border: rgba(108, 92, 231, 0.2);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--darker);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15, 15, 26, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(108, 92, 231, 0.15);
+      transition: all 0.3s;
+    }
+
+    .nav-brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-link {
+      color: var(--text-muted) !important;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding: 0.5rem 1rem !important;
+    }
+
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
+
+    .btn-nav {
+      background: var(--primary);
+      color: white !important;
+      border-radius: 8px;
+      padding: 0.4rem 1.2rem !important;
+      font-size: 0.875rem;
+    }
+
+    .btn-nav:hover {
+      background: #5a4bd1;
+    }
+
+    .dark-toggle {
+      background: none;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+
+    .dark-toggle:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(108, 92, 231, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0, 206, 201, 0.08) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(108, 92, 231, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(108, 92, 231, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(108, 92, 231, 0.12);
+      border: 1px solid rgba(108, 92, 231, 0.3);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-pill span {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.4)
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary-cta {
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      border: none;
+      color: white;
+      padding: 13px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(108, 92, 231, 0.4);
+      color: white;
+    }
+
+    .btn-outline-cta {
+      background: transparent;
+      border: 1.5px solid rgba(108, 92, 231, 0.4);
+      color: var(--text);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline-cta:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .btn-cv {
+      background: transparent;
+      border: 1.5px solid rgba(0, 206, 201, 0.35);
+      color: var(--accent);
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .btn-cv:hover {
+      background: rgba(0, 206, 201, 0.1);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-num {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== PROFILE PICTURE ===== */
+    .profile-wrapper {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      margin: 0 auto;
+      flex-shrink: 0;
+    }
+
+    .profile-outer-ring {
+      position: absolute;
+      inset: -18px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(108, 92, 231, 0.3);
+      animation: spin 22s linear infinite;
+    }
+
+    .profile-inner-ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 206, 201, 0.2);
+      animation: spin 16s linear infinite reverse;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .profile-glow {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108, 92, 231, 0.18) 0%, transparent 70%);
+    }
+
+    .profile-img-container {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(108, 92, 231, 0.5);
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+
+    .profile-img-container:hover {
+      border-color: var(--accent);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: none;
+    }
+
+    .profile-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(108, 92, 231, 0.25), rgba(0, 206, 201, 0.15));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .profile-placeholder:hover {
+      background: linear-gradient(135deg, rgba(108, 92, 231, 0.35), rgba(0, 206, 201, 0.25));
+    }
+
+    .placeholder-icon {
+      font-size: 4rem;
+      line-height: 1;
+    }
+
+    .placeholder-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .upload-hint {
+      font-size: 0.65rem;
+      color: rgba(108, 92, 231, 0.7);
+      margin-top: 2px;
+    }
+
+    .profile-upload-input {
+      display: none;
+    }
+
+    .upload-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid var(--darker);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      font-size: 0.85rem;
+      transition: all 0.25s;
+      z-index: 10;
+    }
+
+    .upload-btn:hover {
+      background: #8b5cf6;
+      transform: scale(1.1);
+    }
+
+    .profile-name-badge {
+      position: absolute;
+      bottom: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 8px 20px;
+      border-radius: 30px;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .profile-name-badge .pname {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .profile-name-badge .ptitle {
+      font-size: 0.72rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .tech-badge {
+      position: absolute;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 7px 13px;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .tech-badge.tb1 {
+      top: -5%;
+      right: -22%;
+      animation-delay: 0s;
+    }
+
+    .tech-badge.tb2 {
+      bottom: 22%;
+      right: -20%;
+      animation-delay: 0.8s;
+    }
+
+    .tech-badge.tb3 {
+      bottom: 5%;
+      left: -18%;
+      animation-delay: 1.6s;
+    }
+
+    .tech-badge.tb4 {
+      top: 22%;
+      left: -20%;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-8px)
+      }
+    }
+
+    /* ===== SECTION GENERAL ===== */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+      margin: 1.2rem 0 2.5rem;
+    }
+
+    /* ===== ABOUT ===== */
+    #about {
+      background: var(--dark);
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      height: 100%;
+    }
+
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(108, 92, 231, 0.1);
+      border: 1px solid rgba(108, 92, 231, 0.2);
+      color: var(--text);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin: 3px;
+    }
+
+    .skill-tag i {
+      color: var(--primary);
+      font-size: 0.75rem;
+    }
+
+    .usp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+
+    .usp-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(108, 92, 231, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .usp-text h6 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+
+    .usp-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ===== SERVICES ===== */
+    #services {
+      background: var(--darker);
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      height: 100%;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(108, 92, 231, 0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(108, 92, 231, 0.5);
+      box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card h5 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .s-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+    }
+
+    /* ===== PORTFOLIO ===== */
+    #portfolio {
+      background: var(--dark);
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+      border-color: rgba(108, 92, 231, 0.45);
+    }
+
+    .project-thumb {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-thumb-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      transition: transform 0.4s;
+    }
+
+    .project-card:hover .project-thumb-inner {
+      transform: scale(1.08);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(108, 92, 231, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .overlay-btn {
+      background: white;
+      color: var(--primary);
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .overlay-btn:hover {
+      transform: scale(1.05);
+      color: var(--primary);
+    }
+
+    .project-body {
+      padding: 1.3rem;
+    }
+
+    .project-body h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .project-body p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(0, 206, 201, 0.1);
+      border: 1px solid rgba(0, 206, 201, 0.25);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tool-tag {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.72rem;
+    }
+
+    .filter-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 7px 18px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    /* ===== SKILLS ===== */
+    #skills {
+      background: var(--darker);
+    }
+
+    .skill-row {
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .skill-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .skill-pct {
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .progress {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+    }
+
+    .progress-bar {
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tool-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .tool-item:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: var(--dark);
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 1.3rem;
+      padding: 13px 15px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+
+    .contact-info-item:hover {
+      border-color: rgba(108, 92, 231, 0.3);
+      background: rgba(108, 92, 231, 0.05);
+    }
+
+    .ci-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(108, 92, 231, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .ci-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .ci-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+
+    .social-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .social-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .form-control-dark {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      width: 100%;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+
+    .form-control-dark:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(108, 92, 231, 0.05);
+      color: var(--text);
+    }
+
+    .form-control-dark::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-label-dark {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    textarea.form-control-dark {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      border: none;
+      color: white;
+      padding: 13px 32px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(108, 92, 231, 0.4);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--darker);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    /* ===== LIGHT MODE ===== */
+    body.light-mode {
+      --darker: #f0f2f8;
+      --dark: #e8ebf4;
+      --card-bg: #ffffff;
+      --card-border: rgba(108, 92, 231, 0.15);
+      --text: #1a1a2e;
+      --text-muted: #64748b;
+    }
+
+    body.light-mode nav {
+      background: rgba(240, 242, 248, 0.92);
+      border-bottom-color: rgba(108, 92, 231, 0.1);
+    }
+
+    body.light-mode .hero-grid {
+      opacity: 0.4;
+    }
+
+    body.light-mode .profile-placeholder {
+      background: linear-gradient(135deg, rgba(108, 92, 231, .15), rgba(0, 206, 201, .1));
+    }
+
+    body.light-mode .form-control-dark {
+      background: #f8f9fc;
+      border-color: #e2e8f0;
+      color: var(--text);
+    }
+
+    body.light-mode .form-control-dark:focus {
+      background: #fff;
+    }
+
+    body.light-mode .tool-item {
+      background: #f8f9fc;
+    }
+
+    body.light-mode .contact-info-item {
+      background: #f8f9fc;
+      border-color: #e2e8f0;
+    }
+
+    body.light-mode .social-btn {
+      background: #f8f9fc;
+      border-color: #e2e8f0;
+    }
+
+    body.light-mode .profile-name-badge {
+      background: #fff;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .tech-badge {
+        display: none;
+      }
+
+      .profile-wrapper {
+        width: 280px;
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 60px 0;
+      }
+
+      .profile-wrapper {
+        width: 240px;
+        height: 240px;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand nav-brand" href="#">BIKRAM</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        style="color:var(--text-muted)">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button class="dark-toggle" onclick="toggleMode()" id="modeBtn">☀ Light</button>
+          <a href="#contact" class="nav-link btn-nav">Hire Me</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <!-- Left: Text -->
+        <div class="col-lg-6">
+          <div class="badge-pill"><span></span> Bikram Kumar Yadav</div>
+          <h1 class="hero-title">
+            WordPress Developer<br>
+            Crafting <span class="highlight">High-Performance</span><br>
+            Websites
+          </h1>
+          <p class="hero-subtitle">
+
+            I’ve built high-performing WordPress websites for businesses, service providers, and online brands using
+            custom themes, WooCommerce, Elementor, ACF, and modern responsive design practices.
+            From fast-loading business websites to dynamic service platforms and eCommerce stores, my projects focus on
+            clean UI, SEO optimization, mobile responsiveness, and conversion-focused development.
+
+          </p>
+          <div class="d-flex flex-wrap gap-3 mb-3">
+            <a href="#contact" class="btn-primary-cta"><i class="fas fa-envelope"></i> Hire Me</a>
+            <a href="#portfolio" class="btn-outline-cta"><i class="fas fa-eye"></i> View Projects</a>
+          </div>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv">
+            <i class="fas fa-download"></i> Download CV
+          </a>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-num">1+</div>
+              <div class="stat-label">Years Exp.</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">20+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">98%</div>
+              <div class="stat-label">Satisfaction</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">7+</div>
+              <div class="stat-label">Clients</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Profile Picture -->
+        <div class="col-lg-6 d-flex justify-content-center">
+          <div style="position:relative; padding: 30px 40px 50px;">
+            <div class="profile-wrapper">
+              <div class="profile-outer-ring"></div>
+              <div class="profile-inner-ring"></div>
+              <div class="profile-glow"></div>
+
+              <!-- Clickable photo frame -->
+              <div class="profile-img-container" onclick="document.getElementById('photoInput').click()"
+                title="Click to upload your photo">
+                <div class="profile-placeholder" id="profilePlaceholder" style="display: none;">
+                  <div class="placeholder-icon">👨‍💻</div>
+                  <div class="placeholder-text">Your Photo Here</div>
+                  <div class="upload-hint"><i class="fas fa-camera" style="font-size:10px;margin-right:3px"></i>Click to
+                    upload</div>
+                </div>
+                <img id="profileImage" class="profile-img" src="bikram-pic.jpg" alt="Bikram Kumar Yadav"
+                  style="display: block;">
+              </div>
+
+              <!-- Camera upload button -->
+              <label class="upload-btn" for="photoInput" title="Upload photo">
+                <i class="fas fa-camera"></i>
+              </label>
+              <input type="file" id="photoInput" class="profile-upload-input" accept="image/*"
+                onchange="previewPhoto(event)">
+
+              <!-- Floating tech badges -->
+              <div class="tech-badge tb1"><i class="fab fa-wordpress" style="color:#21759b;font-size:14px"></i>
+                WordPress</div>
+              <div class="tech-badge tb2"><i class="fas fa-bolt" style="color:#f39c12;font-size:14px"></i> ACF Pro</div>
+              <div class="tech-badge tb3"><i class="fas fa-search" style="color:#00cec9;font-size:14px"></i> Elementor
+                Pro</div>
+              <div class="tech-badge tb4"><i class="fab fa-php" style="color:#8892be;font-size:14px"></i> PHP Dev</div>
+
+              <!-- Name badge -->
+              <div class="profile-name-badge">
+                <div class="pname">Bikram Kumar Yadav</div>
+                <div class="ptitle">WordPress Developer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 mb-5 mb-lg-0">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title">Turning Ideas into <span style="color:var(--primary)">Digital Reality</span></h2>
+          <div class="divider"></div>
+          <p style="color:var(--text-muted);line-height:1.75;font-size:.95rem;margin-bottom:1.2rem">
+            I'm a passionate WordPress developer creating fast, responsive, user-friendly websites that help grow
+            businesses online. I am an experienced hands-on developer in custom WordPress theme development, WooCommerce
+            stores, Elementor customization and ACF integration, providing visually appealing and performance-driven
+            websites.
+          </p>
+          <p style="color:var(--text-muted);line-height:1.75;font-size:.95rem">
+            My approach combines clean code, smart SEO strategy, and performance optimization to deliver websites
+            that don't just look great — they drive real business results.
+          </p>
+          <div class="mt-3">
+            <div class="usp-item">
+              <div class="usp-icon"><i class="fas fa-bolt"></i></div>
+              <div class="usp-text">
+                <h6>Speed-First Development</h6>
+                <p>Every site scores 90+ on Google PageSpeed Insights</p>
+              </div>
+            </div>
+            <div class="usp-item">
+              <div class="usp-icon"><i class="fas fa-search"></i></div>
+              <div class="usp-text">
+                <h6>SEO-Ready Architecture</h6>
+                <p>Schema markup, Core Web Vitals &amp; technical SEO built-in</p>
+              </div>
+            </div>
+            <div class="usp-item">
+              <div class="usp-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="usp-text">
+                <h6>Conversion-Focused Design</h6>
+                <p>Strategic UX decisions backed by data and best practices</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="about-card">
+                <h6
+                  style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:1rem">
+                  Technical Skills</h6>
+                <div>
+                  <span class="skill-tag"><i class="fab fa-wordpress"></i> WordPress</span>
+                  <span class="skill-tag"><i class="fas fa-brush"></i> Elementor Pro</span>
+                  <span class="skill-tag"><i class="fas fa-shopping-cart"></i> WooCommerce</span>
+                  <span class="skill-tag"><i class="fab fa-php"></i> PHP</span>
+                  <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+                  <span class="skill-tag"><i class="fab fa-html5"></i> HTML5/CSS3</span>
+                  <span class="skill-tag"><i class="fab fa-sass"></i> SASS/SCSS</span>
+                  <span class="skill-tag"><i class="fas fa-database"></i> MySQL</span>
+                  <span class="skill-tag"><i class="fas fa-code-branch"></i> Git/GitHub</span>
+                  <span class="skill-tag"><i class="fas fa-tachometer-alt"></i> Speed Opt.</span>
+                  <span class="skill-tag"><i class="fas fa-lock"></i> Security</span>
+                  <span class="skill-tag"><i class="fas fa-search"></i> Technical SEO</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="about-card" style="text-align:center">
+                <div style="font-size:2.2rem;font-weight:800;color:var(--primary)">1+</div>
+                <div style="font-size:.85rem;color:var(--text-muted);margin-top:4px">Years of Experience</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="about-card" style="text-align:center">
+                <div style="font-size:2.2rem;font-weight:800;color:var(--accent)">20+</div>
+                <div style="font-size:.85rem;color:var(--text-muted);margin-top:4px">Projects Delivered</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="about-card" style="text-align:center">
+                <div style="font-size:2.2rem;font-weight:800;color:#8b5cf6">5+</div>
+                <div style="font-size:.85rem;color:var(--text-muted);margin-top:4px">Custom WP Plugins</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="about-card" style="text-align:center">
+                <div style="font-size:2.2rem;font-weight:800;color:#f39c12">98%</div>
+                <div style="font-size:.85rem;color:var(--text-muted);margin-top:4px">Client Satisfaction</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-label">What I Do</span>
+        <h2 class="section-title">Services I Offer</h2>
+        <div class="divider mx-auto"></div>
+        <p class="section-subtitle mx-auto">End-to-end WordPress solutions tailored to your business goals — from design
+          to deployment and beyond.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-icon" style="background:rgba(108,92,231,0.12);color:var(--primary)">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+
+            <h5>Custom WordPress Development</h5>
+
+            <p>
+              Custom-built WordPress websites designed for speed, performance, and scalability.
+              From unique themes to advanced functionality, every project is crafted to match your brand and business
+              goals.
+            </p>
+
+            <div class="service-tags">
+              <span class="s-tag">Theme Dev</span>
+              <span class="s-tag">PHP</span>
+              <span class="s-tag">REST API</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-icon" style="background:rgba(0,206,201,0.12);color:var(--accent)">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+
+            <h5>WooCommerce Stores</h5>
+
+            <p>
+              Professional WooCommerce stores built for seamless shopping experiences, secure payments,
+              and higher conversions. From product management to custom checkout functionality, every store is optimized
+              for performance and growth.
+            </p>
+
+            <div class="service-tags">
+              <span class="s-tag">WooCommerce</span>
+              <span class="s-tag">Payments</span>
+              <span class="s-tag">CRO</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-icon" style="background:rgba(9,132,227,0.12);color:var(--secondary)"><i
+                class="fas fa-paint-brush"></i></div>
+            <h5>Elementor Pro Builds</h5>
+
+            <p>
+              Modern Elementor Pro websites designed with clean layouts, responsive sections, and dynamic content
+              integration.
+              Built with ACF and custom styling for flexible, easy-to-manage pages that perform smoothly across all
+              devices.
+            </p>
+            <div class="service-tags"><span class="s-tag">Elementor</span><span class="s-tag">ACF</span><span
+                class="s-tag">Dynamic</span></div>
+          </div>
+        </div>
+        <!-- <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-icon" style="background:rgba(243,156,18,0.12);color:#f39c12"><i
+                class="fas fa-tachometer-alt"></i></div>
+            <h5>Speed Optimization</h5>
+            <p>From 3s to sub-1s load times. Core Web Vitals fixes, image optimization, caching strategy &amp; CDN
+              configuration.</p>
+            <div class="service-tags"><span class="s-tag">PageSpeed</span><span class="s-tag">CWV</span><span
+                class="s-tag">CDN</span></div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <div class="service-icon" style="background:rgba(253,121,168,0.12);color:#fd79a8"><i
+                class="fas fa-tools"></i></div>
+            <h5>Maintenance &amp; Support</h5>
+            <p>Ongoing WordPress care — updates, backups, security monitoring, uptime checks &amp; priority support when
+              you need it.</p>
+            <div class="service-tags"><span class="s-tag">Security</span><span class="s-tag">Backups</span><span
+                class="s-tag">Updates</span></div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO ===== -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-label">My Work</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="divider mx-auto"></div>
+        <p class="section-subtitle mx-auto">A selection of real-world projects delivering measurable results for clients
+          across industries.</p>
+      </div>
+      <div class="filter-btns justify-content-center">
+        <button class="filter-btn active" onclick="filterProjects('all',this)">All</button>
+        <button class="filter-btn" onclick="filterProjects('wordpress',this)">WordPress</button>
+        <button class="filter-btn" onclick="filterProjects('ecommerce',this)">E-commerce</button>
+        <button class="filter-btn" onclick="filterProjects('restaurant',this)">Restaurant</button>
+        <button class="filter-btn" onclick="filterProjects('business',this)">Business</button>
+      </div>
+      <div class="row g-4" id="projectGrid">
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+              <div class="project-thumb-inner">🏢</div>
+              <div class="project-overlay"><a href="#" class="overlay-btn">View</a><a href="#" class="overlay-btn">Case
+                  Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>LexCorp Law Firm</h5>
+              <p>Custom WordPress theme with appointment booking and case study archive.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> +220% organic traffic</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">PHP</span><span
+                  class="tool-tag">ACF</span><span class="tool-tag">SEO</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 project-item" data-cat="ecommerce seo">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">
+              <div class="project-thumb-inner">🌱</div>
+              <div class="project-overlay"><a href="#" class="overlay-btn">View</a><a href="#" class="overlay-btn">Case
+                  Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>GreenLeaf Organics</h5>
+              <p>Subscription-based WooCommerce store with recurring billing &amp; member dashboard.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> $40K/mo revenue</div>
+              <div class="project-tools"><span class="tool-tag">WooCommerce</span><span
+                  class="tool-tag">Subscriptions</span><span class="tool-tag">PayPal</span></div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- New Projects -->
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress ecommerce restaurant">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#FF9F43,#FF6B6B)">
+              <div class="project-thumb-inner">🍛</div>
+              <div class="project-overlay"><a href="https://demo.wordpress.megaweblinks.com/restaurant3/"
+                  target="_blank" class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Gourmet Grillhouse</h5>
+              <p>Premium restaurant website with online reservations and dynamic digital menu.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> +40% booking rate</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">WooCommerce</span><span
+                  class="tool-tag">Elementor</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress ecommerce restaurant">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#ee0979,#ff6a00)">
+              <div class="project-thumb-inner">🍷</div>
+              <div class="project-overlay"><a href="https://demo.wordpress.megaweblinks.com/restaurant2/"
+                  target="_blank" class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Urban Bistro</h5>
+              <p>Elegant bistro portal with multi-location support and food ordering system.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> AOV +25%</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">PHP</span><span
+                  class="tool-tag">ACF</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress ecommerce restaurant">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#fccb90,#d57eeb)">
+              <div class="project-thumb-inner">🍕</div>
+              <div class="project-overlay"><a href="https://demo.wordpress.megaweblinks.com/restaurant1/"
+                  target="_blank" class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Traditional Tastes</h5>
+              <p>Authentic dining experience website with table booking and specialty showcases.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> 500+ monthly orders</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">Elementor</span><span
+                  class="tool-tag">SEO</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress business">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">
+              <div class="project-thumb-inner">🦷</div>
+              <div class="project-overlay"><a href="https://demo.wordpress.megaweblinks.com/dentist1/" target="_blank"
+                  class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Smile Dental Clinic</h5>
+              <p>Modern dental clinic portal with online scheduling and service catalogs.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> +150 appointments/mo</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">Booking</span><span
+                  class="tool-tag">ACF</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress business">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+              <div class="project-thumb-inner">⚖️</div>
+              <div class="project-overlay"><a href="https://demo.wordpress.megaweblinks.com/megalaw2/" target="_blank"
+                  class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Law & Associate</h5>
+              <p>Professional law firm portal with legal service listings and secure consultation forms.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> Page 1 for "Legal Firm"</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">PHP</span><span
+                  class="tool-tag">Security</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress business">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">
+              <div class="project-thumb-inner">🏗️</div>
+              <div class="project-overlay"><a href="https://irishfloorcompany.com/" target="_blank"
+                  class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Irish Floor Company</h5>
+              <p>Industrial flooring specialists website for a Dublin-based industry leader.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> +180% organic leads</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">SEO</span><span
+                  class="tool-tag">Performance</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress business">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#f093fb,#f5576c)">
+              <div class="project-thumb-inner">✈️</div>
+              <div class="project-overlay"><a href="https://demo.wordpress.megaweblinks.com/smartholiday/"
+                  target="_blank" class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Smart Holidays</h5>
+              <p>Full-service travel agency portal featuring holiday packages and destination guides.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> 10K+ monthly visitors</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">Elementor</span><span
+                  class="tool-tag">Dynamic</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress business">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#84fab0,#8fd3f4)">
+              <div class="project-thumb-inner">☁️</div>
+              <div class="project-overlay"><a href="https://demo.wordpress.megaweblinks.com/bright-sky/" target="_blank"
+                  class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Bright Sky Services</h5>
+              <p>Service-oriented business website with online booking and client testimonials.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> 99% uptime score</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">ACF</span><span
+                  class="tool-tag">Speed</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress business">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)">
+              <div class="project-thumb-inner">🚛</div>
+              <div class="project-overlay"><a href="https://vialogisticsglobal.com/" target="_blank"
+                  class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>Via Logistics Global</h5>
+              <p>Global logistics and supply chain platform for seamless freight operations.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> Real-time tracking</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">PHP</span><span
+                  class="tool-tag">Maps API</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 project-item" data-cat="wordpress business">
+          <div class="project-card">
+            <div class="project-thumb" style="background:linear-gradient(135deg,#fa709a,#fee140)">
+              <div class="project-thumb-inner">🏗️</div>
+              <div class="project-overlay"><a href="https://stbuilders.com.np/" target="_blank"
+                  class="overlay-btn">View</a><a href="#" class="overlay-btn">Case Study</a></div>
+            </div>
+            <div class="project-body">
+              <h5>ST Builders & Engineers</h5>
+              <p>Premier construction company website showcasing large-scale infrastructure projects.</p>
+              <div class="project-result"><i class="fas fa-arrow-up"></i> 30+ years experience</div>
+              <div class="project-tools"><span class="tool-tag">WP</span><span class="tool-tag">Theme Dev</span><span
+                  class="tool-tag">SEO</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-label">Expertise</span>
+        <h2 class="section-title">Skills &amp; Tools</h2>
+        <div class="divider mx-auto"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="about-card h-100">
+            <h6
+              style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:1.5rem">
+              Proficiency Levels</h6>
+            <div id="skillBars">
+              <div class="skill-row">
+                <div class="skill-info"><span class="skill-name">WordPress</span><span class="skill-pct">98%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" style="width:0%" data-width="98%"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info"><span class="skill-name">PHP Development</span><span
+                    class="skill-pct">90%</span></div>
+                <div class="progress">
+                  <div class="progress-bar" style="width:0%" data-width="90%"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info"><span class="skill-name">HTML / CSS / JS</span><span
+                    class="skill-pct">95%</span></div>
+                <div class="progress">
+                  <div class="progress-bar" style="width:0%" data-width="95%"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info"><span class="skill-name">JavaScript / jQuery</span><span
+                    class="skill-pct">82%</span></div>
+                <div class="progress">
+                  <div class="progress-bar" style="width:0%" data-width="82%"></div>
+                </div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-info"><span class="skill-name">WooCommerce</span><span class="skill-pct">93%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" style="width:0%" data-width="93%"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="about-card h-100">
+            <h6
+              style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:1.5rem">
+              Tools &amp; Technologies</h6>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <div class="tool-item"><i class="fab fa-wordpress" style="color:#21759b"></i> WordPress</div>
+              <div class="tool-item"><i class="fab fa-woocommerce" style="color:#96588a"></i> WooCommerce</div>
+              <div class="tool-item"><i class="fab fa-php" style="color:#8892be"></i> PHP 8+</div>
+              <div class="tool-item"><i class="fab fa-js-square" style="color:#f7df1e"></i> JavaScript</div>
+              <div class="tool-item"><i class="fab fa-css3-alt" style="color:#1572b6"></i> CSS3/SASS</div>
+              <div class="tool-item"><i class="fab fa-html5" style="color:#e34f26"></i> HTML</div>
+              <div class="tool-item"><i class="fas fa-database" style="color:#00758f"></i> MySQL</div>
+              <div class="tool-item"><i class="fab fa-git-alt" style="color:#f05032"></i> Git</div>
+              <div class="tool-item"><i class="fas fa-paint-brush" style="color:#6c5ce7"></i> Elementor</div>
+              <!-- <div class="tool-item"><i class="fas fa-search" style="color:#a4c639"></i> Yoast SEO</div> -->
+              <!-- <div class="tool-item"><i class="fas fa-server" style="color:#00cec9"></i> cPanel/SSH</div> -->
+              <div class="tool-item"><i class="fab fa-figma" style="color:#a259ff"></i> Figma</div>
+              <div class="tool-item"><i class="fas fa-shield-alt" style="color:#f39c12"></i> Wordfence</div>
+              <div class="tool-item"><i class="fas fa-tachometer-alt" style="color:#e17055"></i> WP Rocket</div>
+              <div class="tool-item"><i class="fab fa-cloudflare" style="color:#f48120"></i> Cloudflare</div>
+              <div class="tool-item"><i class="fab fa-google" style="color:#4285f4"></i> GSC/GA4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-label">Get In Touch</span>
+        <h2 class="section-title">Let's Work Together</h2>
+        <div class="divider mx-auto"></div>
+        <p class="section-subtitle mx-auto">Have a project in mind? I'd love to hear about it. Drop me a message and
+          I'll get back to you within 24 hours.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="contact-card h-100">
+            <h6
+              style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:1.5rem">
+              Contact Information</h6>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <div class="ci-label">Email</div>
+                <div class="ci-value">bikramy011@gmail.com</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="ci-label">Phone</div>
+                <div class="ci-value">+977 9807348222</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <div class="ci-label">Location</div>
+                <div class="ci-value">Nepal, Kathmandu</div>
+              </div>
+            </div>
+            <!-- <div class="contact-info-item" style="margin-bottom:0">
+              <div class="ci-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <div class="ci-label">Availability</div>
+                <div class="ci-value">24/7</div>
+              </div>
+            </div> -->
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/bikram-yadav-62bb5b290/" class="social-btn" title="LinkedIn"><i
+                  class="fab fa-linkedin-in"></i></a>
+              <a href="https://github.com/bikramy011-cmd" class="social-btn" title="GitHub"><i
+                  class="fab fa-github"></i></a>
+              <!-- <a href="#" class="social-btn" title="Twitter"><i class="fab fa-twitter"></i></a> -->
+              <a href=" " class="social-btn" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="contact-card">
+            <h6
+              style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:1.5rem">
+              Send a Message</h6>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label-dark">Full Name</label>
+                <input type="text" class="form-control-dark" placeholder="Your Name">
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label-dark">Email Address</label>
+                <input type="email" class="form-control-dark" placeholder="name123@gmail.com">
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label-dark">Phone Number</label>
+                <input type="tel" class="form-control-dark" placeholder="Phone Number">
+              </div>
+              <div class="col-12">
+                <label class="form-label-dark">Project Details</label>
+                <textarea class="form-control-dark"
+                  placeholder="Tell me about your project, goals, and timeline..."></textarea>
+              </div>
+              <div class="col-12">
+                <button class="btn-submit" onclick="handleSubmit(this)">
+                  <i class="fas fa-paper-plane" style="margin-right:8px"></i>Send Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:.5rem;font-weight:700;font-size:1.1rem;color:var(--text)">Bikram Kumar Yadav</p>
+      <p style="margin-bottom:1rem;font-size:.85rem">WordPress Developer — Crafting high-performance experiences
+        worldwide</p>
+      <div class="d-flex justify-content-center gap-4 flex-wrap" style="font-size:.85rem;margin-bottom:1.5rem">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p style="font-size:.78rem;color:var(--text-muted)">&copy; 2026 Bikram Kumar Yadav. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* Photo upload preview */
+    function previewPhoto(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.getElementById('profileImage');
+        const placeholder = document.getElementById('profilePlaceholder');
+        img.src = e.target.result;
+        img.style.display = 'block';
+        placeholder.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    /* Dark / Light mode toggle */
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const btn = document.getElementById('modeBtn');
+      btn.textContent = document.body.classList.contains('light-mode') ? '🌙 Dark' : '☀ Light';
+    }
+
+    /* Portfolio filter */
+    function filterProjects(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-item').forEach(item => {
+        item.style.display = (cat === 'all' || item.dataset.cat.includes(cat)) ? '' : 'none';
+      });
+    }
+
+    /* Contact form submit feedback */
+    function handleSubmit(btn) {
+      btn.innerHTML = '<i class="fas fa-check" style="margin-right:8px"></i>Message Sent!';
+      btn.style.background = 'linear-gradient(135deg,#00b894,#00cec9)';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:8px"></i>Send Message';
+        btn.style.background = '';
+      }, 3000);
+    }
+
+    /* Animate skill bars on scroll into view */
+    const skillObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.progress-bar').forEach(bar => {
+            bar.style.width = bar.dataset.width;
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    const skillSection = document.getElementById('skillBars');
+    if (skillSection) skillObserver.observe(skillSection);
+
+    /* Sticky nav background on scroll */
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      const lm = document.body.classList.contains('light-mode');
+      nav.style.background = window.scrollY > 60
+        ? (lm ? 'rgba(240,242,248,0.97)' : 'rgba(10,10,20,0.97)')
+        : (lm ? 'rgba(240,242,248,0.88)' : 'rgba(15,15,26,0.88)');
+    });
+  </script>
+</body>
+
+</html>
